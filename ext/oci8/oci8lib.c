@@ -38,7 +38,9 @@ void oci8_base_free(oci8_base_t *base)
         base->klass->free(base);
     if (base->type >= OCI_DTYPE_FIRST)
         OCIDescriptorFree(base->hp.ptr, base->type);
-    else if (base->type >= OCI_HTYPE_FIRST)
+    else if (base->type >= OCI_HTYPE_FIRST &&
+             base->type != OCI_HTYPE_DEFINE &&
+             base->type != OCI_HTYPE_BIND)
         OCIHandleFree(base->hp.ptr, base->type);
     base->type = 0;
     base->hp.ptr = NULL;
