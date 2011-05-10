@@ -8,7 +8,7 @@
 #
 require 'fileutils'
 
-if ARGV.size > 3
+if false && ARGV.size > 3
    gem_platform = ARGV[3]
 else
    gem_platform = Gem::Platform::RUBY
